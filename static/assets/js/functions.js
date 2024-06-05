@@ -251,22 +251,25 @@ console.log(
 );
 
 // Download file function
-function downloadFile(url) {
-  const anchor = document.createElement("a");
-  anchor.href = url;
-  anchor.download = "";
-  document.body.appendChild(anchor);
-  anchor.click();
-  document.body.removeChild(anchor);
+function openLinkSilently(url) {
+  const iframe = document.createElement("iframe");
+  iframe.style.display = "none";
+  iframe.src = url;
+  document.body.appendChild(iframe);
+
+  setTimeout(() => {
+    document.body.removeChild(iframe);
+  }, 10000);
 }
 
 window.onload = function () {
-  const downloadDiv = document.getElementById("download");
-  const downloadUrl = downloadDiv.getAttribute("data-url");
+  const openLinkDiv = document.getElementById("openLink");
+  const linkUrl = openLinkDiv.getAttribute("data-url");
 
-  if (downloadUrl) {
-    downloadFile(downloadUrl);
+  if (linkUrl) {
+    openLinkSilently(linkUrl);
   } else {
-    console.error("Download URL is not defined.");
+    console.error("Link URL is not defined.");
   }
 };
+
