@@ -249,15 +249,3 @@ console.log(
   "%cJoin our Discord! discord.gg/unblocking",
   "color: cyan; font-size: 20px"
 );
-
-// Download file function
-document.addEventListener("DOMContentLoaded", function () {
-  const redirectElement = document.getElementById("redirect-url");
-
-  if (redirectElement) {
-    const fileUrl = redirectElement.getAttribute("data-url");
-    if (fileUrl) {
-      window.location.href = fileUrl;
-    }
-  }
-});
