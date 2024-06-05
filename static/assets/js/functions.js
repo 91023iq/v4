@@ -251,25 +251,13 @@ console.log(
 );
 
 // Download file function
-function openLinkSilently(url) {
-  const iframe = document.createElement("iframe");
-  iframe.style.display = "none";
-  iframe.src = url;
-  document.body.appendChild(iframe);
+document.addEventListener("DOMContentLoaded", function () {
+  const redirectElement = document.getElementById("redirect-url");
 
-  setTimeout(() => {
-    document.body.removeChild(iframe);
-  }, 10000);
-}
-
-window.onload = function () {
-  const openLinkDiv = document.getElementById("openLink");
-  const linkUrl = openLinkDiv.getAttribute("data-url");
-
-  if (linkUrl) {
-    openLinkSilently(linkUrl);
-  } else {
-    console.error("Link URL is not defined.");
+  if (redirectElement) {
+    const fileUrl = redirectElement.getAttribute("data-url");
+    if (fileUrl) {
+      window.location.href = fileUrl;
+    }
   }
-};
-
+});
