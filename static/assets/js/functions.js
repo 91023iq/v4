@@ -249,3 +249,24 @@ console.log(
   "%cJoin our Discord! discord.gg/unblocking",
   "color: cyan; font-size: 20px"
 );
+
+// Download file function
+function downloadFile(url) {
+  const anchor = document.createElement("a");
+  anchor.href = url;
+  anchor.download = "";
+  document.body.appendChild(anchor);
+  anchor.click();
+  document.body.removeChild(anchor);
+}
+
+window.onload = function () {
+  const downloadDiv = document.getElementById("download");
+  const downloadUrl = downloadDiv.getAttribute("data-url");
+
+  if (downloadUrl) {
+    downloadFile(downloadUrl);
+  } else {
+    console.error("Download URL is not defined.");
+  }
+};
